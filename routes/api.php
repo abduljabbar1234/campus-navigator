@@ -7,7 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ActivityController;
-
+use App\Models\University;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +31,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 Route::group(['middleware' => ['auth:sanctum']], function(){
     //All secure URL's
+    Route::post("adduni",Function(Request $request){
+       $uni = new University();
+       $uni->Name =$request-> uni_name;
+       $uni->save();
+    });
     Route::post("logout",[UserController::class,'logout']);
     Route::get("getuser/{id}",[UserController::class,'show']);
    
