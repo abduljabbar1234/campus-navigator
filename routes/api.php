@@ -53,7 +53,7 @@ Route::post("changepassword/{id}",[UserController::class,'changePassword']);
 //Route::apiResource("location", LocationController::class);
 Route::post("add",[LocationController::class,'store']);
 Route::post("login",[UserController::class,'login']);
-//jkm
+//jkmhh
 //Route::get("create",[UserController::class,'create']);
 Route::post("adduser",[UserController::class,'store']);
 //Route::get("edit/{id}",[UserController::class,'edit']);
