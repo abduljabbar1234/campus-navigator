@@ -35,6 +35,7 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
        $uni = new University();
        $uni->Name =$request-> uni_name;
        $uni->save();
+       return "success";
     });
     Route::post("logout",[UserController::class,'logout']);
     Route::get("getuser/{id}",[UserController::class,'show']);
