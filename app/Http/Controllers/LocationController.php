@@ -64,6 +64,9 @@ class LocationController extends Controller
         $location->Longitude=$request->input('longitude');
         $location->category_id=$request->input('category_id');
         $location->uni_id=$request->input('uni_id');
+        if($request->input('status')!=null){
+            $location->status=$request->input('status');
+        }
 
         $loc_saved = $location->save();
         $activity = new Activity();
@@ -83,6 +86,9 @@ class LocationController extends Controller
                 $room->category_id=$r['rcategory'];
                 $room->location_id =$location->Location_id;
                 $room->uni_id =$r['uni_id'];
+                if($request->input('status')!=null){
+                    $room->status=$request->input('status');
+                }
                 $room_saved = $room->save();
                 if(!$room_saved){
                     array_push($arr,$r['room_num']);
@@ -164,6 +170,7 @@ class LocationController extends Controller
                 $room->category_id=$r['rcategory'];
                 $room->uni_id=$r['uni_id'];
                 $room->location_id =$location->Location_id;
+                $room->status='approved';
                 $room_saved = $room->save();
                 if(!$room_saved){
                     array_push($arr,$r['room_num']);
